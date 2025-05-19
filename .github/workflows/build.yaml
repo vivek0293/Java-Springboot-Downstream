@@ -1,0 +1,45 @@
+name: Build JAR
+
+on:
+  push:
+    branches:
+      - renovate/**
+      - 'pom.xml'
+      - '**/*.java'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Mavene
+        run: mvn clean package
+
+      - name: Publish JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: Downstream
+          path: /home/runner/work/Java-Downstream-Project-Public/Java-Downstream-Project-Public/target/downstream-0.0.1-SNAPSHOT.jar
+
+      - name: Replace Existing Jar File
+        run: |
+          cp /home/runner/work/Java-Downstream-Project-Public/Java-Downstream-Project-Public/target/downstream-0.0.1-SNAPSHOT.jar ./Downstream.jar 
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add ./Downstream.jar
+          git commit -m 'Update downstream.jar with latest generated jar'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOWNSTREAM_PAT }}
