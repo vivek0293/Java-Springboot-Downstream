@@ -6,6 +6,7 @@ on:
       - renovate/**
       - 'pom.xml'
       - '**/*.java'
+      - main
 
 jobs:
   build:
@@ -28,11 +29,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Downstream
-          path: /home/runner/work/Java-Downstream-Project-Public/Java-Downstream-Project-Public/target/downstream-0.0.1-SNAPSHOT.jar
+          path: /home/runner/work/Java-Springboot-Downstream/Java-Springboot-Downstream/target/downstream-0.0.1-SNAPSHOT.jar
 
       - name: Replace Existing Jar File
         run: |
-          cp /home/runner/work/Java-Downstream-Project-Public/Java-Downstream-Project-Public/target/downstream-0.0.1-SNAPSHOT.jar ./Downstream.jar 
+          cp /home/runner/work/Java-Springboot-Downstream/Java-Springboot-Downstream/target/downstream-0.0.1-SNAPSHOT.jar ./Downstream.jar 
 
       - name: Commit and Push Changes
         run: |
