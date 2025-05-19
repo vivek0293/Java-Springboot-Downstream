@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.5</version>
+		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.vivek.simple.springboot.downstream</groupId>
+	<groupId>com.vivek.simple.springboot</groupId>
 	<artifactId>downstream</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>downstream</name>
@@ -36,7 +36,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-                    			<mainClass>com.vivek.simple.springboot.DownstreamApplication</mainClass>
+                    			<mainClass>com.vivek.simple.springboot.downstream.DownstreamApplication</mainClass>
                 		</configuration>
 			</plugin>
 		</plugins>
