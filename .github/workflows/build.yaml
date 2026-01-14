@@ -26,7 +26,7 @@ jobs:
         run: mvn clean package
 
       - name: Publish JAR
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Downstream
           path: /home/runner/work/Java-Springboot-Downstream/Java-Springboot-Downstream/target/downstream-0.0.1-SNAPSHOT.jar
